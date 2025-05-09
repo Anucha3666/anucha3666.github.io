@@ -19,7 +19,7 @@ export const SectionHome = () => {
     },
     {
       title: "Rayong, Thailand 2024",
-      image: "/images/me/rayong_2025.png",
+      image: "/images/me/rayong_2024.png",
       className: "absolute top-15 left-[25%] rotate-[8deg]",
     },
     {
@@ -96,13 +96,15 @@ export const SectionHome = () => {
             <DraggableCardBody
               key={`${item?.title}-${i + 1}`}
               className={item.className}>
-              <Image
-                src={item.image}
-                alt={item.title}
-                width={20}
-                height={20}
-                className='pointer-events-none relative z-10 h-80 w-80 object-cover'
-              />
+              <div className=' h-max max-h-[16rem] w-max max-w-[16rem] flex justify-center items-center overflow-hidden'>
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  width={100}
+                  height={100}
+                  className='pointer-events-none relative z-10 h-max w-full object-cover'
+                />
+              </div>
 
               <h3 className='mt-4 text-center text-xl font-bold text-neutral-700 dark:text-neutral-300'>
                 {item.title}
