@@ -57,7 +57,7 @@ export const SectionHome = () => {
             {"I'm Anucha Rampeungnit"}
           </h1>
           <p className='max-w-[600px] text-muted-foreground md:text-xl'>
-            Full-Stack Developer & UX Designer with 5+ years of experience
+            Full-Stack Developer & UX Designer with 3+ years of experience
             building web applications
           </p>
         </div>
@@ -90,24 +90,23 @@ export const SectionHome = () => {
       <div className='flex w-full h-full items-center justify-center'>
         <DraggableCardContainer className='relative flex h-full w-full items-center justify-center overflow-clip '>
           <p className='absolute top-1/2 mx-auto max-w-sm -translate-y-3/4 text-center text-2xl font-black text-neutral-400 md:text-4xl dark:text-neutral-800'>
-            I was born on April 4, 2001.
+            The more knowledge we gain, the more we become aware of our
+            ignorance.
           </p>
           {items?.map((item, i) => (
             <DraggableCardBody
               key={`${item?.title}-${i + 1}`}
               className={item.className}>
-              <div className=' h-max max-h-[16rem] w-max max-w-[16rem] flex justify-center items-center overflow-hidden'>
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  width={100}
-                  height={100}
-                  className='pointer-events-none relative z-10 h-max w-full object-cover'
-                />
-              </div>
+              <Image
+                src={item?.image}
+                alt={item?.title}
+                width={256}
+                height={256}
+                className='pointer-events-none relative z-10 h-64 w-64 object-cover rounded'
+              />
 
               <h3 className='mt-4 text-center text-xl font-bold text-neutral-700 dark:text-neutral-300'>
-                {item.title}
+                {item?.title}
               </h3>
             </DraggableCardBody>
           ))}
