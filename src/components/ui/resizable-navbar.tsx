@@ -125,9 +125,10 @@ export const NavItems = ({ items, className }: NavItemsProps) => {
           onMouseEnter={() => setHovered(idx)}
           onClick={(e) => {
             e.preventDefault();
-            document
-              .getElementById(item?.toLocaleLowerCase())
-              ?.scrollIntoView({ behavior: "smooth", block: "end" });
+            document.getElementById(item?.toLocaleLowerCase())?.scrollIntoView({
+              behavior: "smooth",
+              block: item === "" ? "end" : "start",
+            });
           }}>
           {hovered === idx && (
             <motion.div

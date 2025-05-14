@@ -1,3 +1,5 @@
+"use client";
+
 import {
   DraggableCardBody,
   DraggableCardContainer,
@@ -20,27 +22,30 @@ export const SectionHome = () => {
     {
       title: "Rayong, Thailand 2024",
       image: "/images/me/rayong_2024.png",
-      className: "absolute top-15 left-[25%] rotate-[8deg]",
+      className: "absolute top-15 left-[25%] rotate-[8deg] xl:left-[35%]",
     },
     {
       title: "Surat Thani, Thailand 2024",
       image: "/images/me/surat-thani_2024.png",
-      className: "absolute top-50 left-[40%] rotate-[10deg]",
+      className: "absolute top-50 left-[40%] rotate-[10deg] xl:left-[56%]",
     },
     {
       title: "Kunming, China 2024",
       image: "/images/me/kunming_2024.png",
-      className: "absolute top-60 left-[10%] rotate-[2deg]",
+      className:
+        "absolute top-60 left-[10%] rotate-[2deg] xl:top-80 xl:left-[16%]",
     },
     {
       title: "Rayong, Thailand 2025",
       image: "/images/me/rayong_2025.png",
-      className: "absolute top-70 left-[30%] rotate-[-7deg]",
+      className:
+        "absolute top-70 left-[30%] rotate-[-7deg] xl:top-100 xl:left-[40%]",
     },
     {
       title: "Mahingsa",
       image: "/images/me/mahingsa.jpeg",
-      className: "absolute top-42 left-[20%] rotate-[4deg]",
+      className:
+        "absolute top-42 left-[20%] rotate-[4deg] xl:top-62 xl:left-[32%] ",
     },
   ];
   return (
@@ -57,15 +62,31 @@ export const SectionHome = () => {
             {"I'm Anucha Rampeungnit"}
           </h1>
           <p className='max-w-[600px] text-muted-foreground md:text-xl'>
-            Full-Stack Developer & UX Designer with 3+ years of experience
+            Full-Stack Developer & UX/UI Designer with 3+ years of experience
             building web applications
           </p>
         </div>
         <div className='flex flex-col gap-2 min-[400px]:flex-row'>
-          <button className='px-4 py-2 rounded-md border border-black bg-white text-black text-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200'>
+          <button
+            className='px-4 py-2 rounded-md border border-black bg-white text-black text-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200'
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById("contact")?.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }}>
             Contact Me
           </button>
-          <button className='px-4 py-2 rounded-md border border-black bg-white text-black text-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200'>
+          <button
+            className='px-4 py-2 rounded-md border border-black bg-white text-black text-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200'
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById("projects")?.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }}>
             View Projects
           </button>
         </div>
