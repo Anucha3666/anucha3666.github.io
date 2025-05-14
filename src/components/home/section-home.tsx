@@ -6,46 +6,47 @@ import {
 } from "@/components/ui/draggable-card";
 import Image from "next/image";
 import Link from "next/link";
+import { TypewriterEffectSmooth } from "../ui/typewriter-effect";
 
 export const SectionHome = () => {
   const items = [
     {
       title: "Sichuan, China 2019",
       image: "/images/me/sichuan_2019.png",
-      className: "absolute top-50 left-[20%] rotate-[-7deg]",
+      className: "absolute top-54 left-[20%] rotate-[-7deg]",
     },
     {
       title: "Chanthaburi, Thailand 2024",
       image: "/images/me/chanthaburi_2024.png",
-      className: "absolute top-30 left-[5%] rotate-[-5deg]",
+      className: "absolute top-34 left-[5%] rotate-[-5deg]",
     },
     {
       title: "Rayong, Thailand 2024",
       image: "/images/me/rayong_2024.png",
-      className: "absolute top-15 left-[25%] rotate-[8deg] xl:left-[35%]",
+      className: "absolute top-19 left-[25%] rotate-[8deg] 2xl:left-[35%]",
     },
     {
       title: "Surat Thani, Thailand 2024",
       image: "/images/me/surat-thani_2024.png",
-      className: "absolute top-50 left-[40%] rotate-[10deg] xl:left-[56%]",
+      className: "absolute top-54 left-[40%] rotate-[10deg] 2xl:left-[56%]",
     },
     {
       title: "Kunming, China 2024",
       image: "/images/me/kunming_2024.png",
       className:
-        "absolute top-60 left-[10%] rotate-[2deg] xl:top-80 xl:left-[16%]",
+        "absolute top-64 left-[10%] rotate-[2deg] 2xl:top-80 2xl:left-[16%]",
     },
     {
       title: "Rayong, Thailand 2025",
       image: "/images/me/rayong_2025.png",
       className:
-        "absolute top-70 left-[30%] rotate-[-7deg] xl:top-100 xl:left-[40%]",
+        "absolute top-74 left-[30%] rotate-[-7deg] 2xl:top-100 2xl:left-[40%]",
     },
     {
       title: "Mahingsa",
       image: "/images/me/mahingsa.jpeg",
       className:
-        "absolute top-42 left-[20%] rotate-[4deg] xl:top-62 xl:left-[32%] ",
+        "absolute top-46 left-[20%] rotate-[4deg] 2xl:top-62 2xl:left-[32%] ",
     },
   ];
   return (
@@ -55,12 +56,22 @@ export const SectionHome = () => {
       style={{ height: "calc(100dvh - 3rem)" }}>
       <div className='flex w-full flex-col justify-center space-y-4'>
         <div className='space-y-2'>
-          <h1 className='text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-nowrap'>
+          <h1 className='text-3xl font-bold tracking-tighter sm:text-5xl 2xl:text-6xl/none text-nowrap'>
             {"Hi, Guys"}
           </h1>
-          <h1 className='text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-nowrap'>
-            {"I'm Anucha Rampeungnit"}
-          </h1>
+          <TypewriterEffectSmooth
+            words={[
+              {
+                text: "I'm",
+              },
+              {
+                text: "Anucha",
+              },
+              {
+                text: "Rampeungnit",
+              },
+            ]}
+          />
           <p className='max-w-[600px] text-muted-foreground md:text-xl'>
             Full-Stack Developer & UX/UI Designer with 3+ years of experience
             building web applications
