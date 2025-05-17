@@ -1,12 +1,13 @@
 "use client";
 
-import { SectionAbout, SectionHome } from "@/components/home";
+import { SectionAbout, SectionHome, SectionProjects } from "@/components/home";
 
 export default function Home() {
   return (
     <div className=' w-full h-min flex flex-col'>
       <SectionHome />
       <SectionAbout />
+      <SectionProjects />
     </div>
   );
 }

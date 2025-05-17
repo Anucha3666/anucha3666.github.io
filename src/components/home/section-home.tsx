@@ -54,8 +54,8 @@ export const SectionHome = () => {
       id='home'
       className='flex w-full gap-20 justify-center items-center px-4 md:px-6'
       style={{ height: "calc(100dvh - 3rem)" }}>
-      <div className='flex w-full flex-col justify-center space-y-4'>
-        <div className='space-y-2'>
+      <div className='flex w-full flex-col justify-center items-center space-y-4'>
+        <div className='space-y-2 w-full flex flex-col justify-center items-center'>
           <h1 className='text-3xl font-bold tracking-tighter sm:text-5xl 2xl:text-6xl/none text-nowrap'>
             {"Hi, Guys"}
           </h1>
