@@ -1,6 +1,11 @@
 "use client";
 
-import { SectionAbout, SectionHome, SectionProjects } from "@/components/home";
+import {
+  SectionAbout,
+  SectionExperience,
+  SectionHome,
+  SectionProjects,
+} from "@/components/home";
 
 export default function Home() {
   return (
@@ -8,6 +13,7 @@ export default function Home() {
       <SectionHome />
       <SectionAbout />
       <SectionProjects />
+      <SectionExperience />
     </div>
   );
 }
