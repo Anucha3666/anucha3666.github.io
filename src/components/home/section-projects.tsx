@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Card, Carousel } from "../ui/apple-cards-carousel";
 
 export const SectionProjects = () => {
@@ -21,11 +22,11 @@ export const SectionProjects = () => {
                 problem. Langotiya jeetu ka mara hua yaar is ready to capture
                 every thought.
               </p>
-              <img
+              <Image
                 src='https://assets.aceternity.com/macbook.png'
                 alt='Macbook mockup from Aceternity UI'
-                height='500'
-                width='500'
+                width={64}
+                height={64}
                 className='md:w-1/2 md:h-1/2 h-full w-full mx-auto object-contain'
               />
             </div>
@@ -88,7 +89,7 @@ export const SectionProjects = () => {
   return (
     <section
       id='projects'
-      className='flex flex-col w-full gap-10 justify-center items-center px-4 md:px-6 pt-[3.2rem]'
+      className='flex flex-col w-full gap-10 justify-center items-center px-4 md:px-6 pt-[5rem]'
       style={{ height: "calc(100dvh)" }}>
       <div className=' flex flex-col gap-2 justify-center items-center'>
         <p className=' text-4xl font-bold'>My Projects</p>

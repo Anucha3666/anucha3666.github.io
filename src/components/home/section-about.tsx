@@ -8,7 +8,7 @@ export const SectionAbout = () => {
   return (
     <section
       id='about'
-      className='flex flex-col w-full gap-10 justify-center items-center px-4 md:px-6 pt-[3.2rem]'
+      className='flex flex-col w-full gap-10 justify-center items-center px-4 md:px-6 pt-[5rem]'
       style={{ height: "calc(100dvh)" }}>
       <div className=' flex flex-col gap-2 justify-center items-center'>
         <p className=' text-4xl font-bold'>My Background</p>

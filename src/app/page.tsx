@@ -2,6 +2,7 @@
 
 import {
   SectionAbout,
+  SectionCertifications,
   SectionExperience,
   SectionHome,
   SectionProjects,
@@ -14,6 +15,7 @@ export default function Home() {
       <SectionAbout />
       <SectionProjects />
       <SectionExperience />
+      <SectionCertifications />
     </div>
   );
 }
