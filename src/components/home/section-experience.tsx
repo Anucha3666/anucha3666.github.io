@@ -1,7 +1,8 @@
 "use client";
 
-import { DATA_EDUCATION_EXPERIENCE, DATA_WORK_EXPERIENCE } from "@/constants";
+import { DATA_WORK_EXPERIENCE } from "@/constants";
 import { useState } from "react";
+import { DATA_EDUCATION_EXPERIENCE } from "../experiences";
 import { Cover } from "../ui/cover";
 import { Timeline } from "../ui/timeline";
 import { Vortex } from "../ui/vortex";
@@ -18,7 +19,7 @@ export const SectionExperience = () => {
       style={{ height: "calc(100dvh)" }}>
       <Vortex
         backgroundColor='#FFFFFF00'
-        className='flex items-center flex-col justify-center w-full h-full'>
+        className='flex items-center flex-col justify-center w-full h-full pb-8'>
         <div className=' flex flex-col h-min gap-2 pt-8 justify-center items-center'>
           <div className='flex gap-2 items-center relative'>
             <svg
@@ -66,7 +67,7 @@ export const SectionExperience = () => {
               : "My academic background, highlighting my studies, achievements, and areas of focus throughout my educational journey."}
           </p>
         </div>
-        <div className='w-full h-full justify-center items-center overflow-auto pt-4 px-4 pb-8'>
+        <div className='w-full h-full justify-center items-center overflow-auto pt-4 px-4 pb-8 font-sans md:px-10 bg-[#FFFFFF05] backdrop-blur-md rounded-2xl shadow-xl border-[1px] border-[#00000005]'>
           <Timeline
             data={
               isWorkExperience
