@@ -67,15 +67,12 @@ export const SectionExperience = () => {
               : "My academic background, highlighting my studies, achievements, and areas of focus throughout my educational journey."}
           </p>
         </div>
-        <div className='w-full h-full justify-center items-center overflow-auto pt-4 px-4 pb-8 font-sans md:px-10 bg-[#FFFFFF05] backdrop-blur-md rounded-2xl shadow-xl border-[1px] border-[#00000005]'>
-          <Timeline
-            data={
-              isWorkExperience
-                ? DATA_WORK_EXPERIENCE
-                : DATA_EDUCATION_EXPERIENCE
-            }
-          />
-        </div>
+
+        <Timeline
+          data={
+            isWorkExperience ? DATA_WORK_EXPERIENCE : DATA_EDUCATION_EXPERIENCE
+          }
+        />
       </Vortex>
     </section>
   );

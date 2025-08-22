@@ -18,10 +18,10 @@ export const DATA_EDUCATION_EXPERIENCE = [
       </div>
     ),
     content: (
-      <>
+      <div className=' flex flex-col gap-12'>
         <HVCMechatronicsRobotics />
         <RobotIntlStudent />
-      </>
+      </div>
     ),
   },
   {
