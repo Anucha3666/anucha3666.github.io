@@ -96,19 +96,46 @@ export const SectionCertifications = () => {
 
   const tabs = [
     {
-      title: "Product",
-      value: "product",
+      title: "Programming",
+      value: "programming",
       content: (
-        <div className=' w-full h-full justify-center items-center overflow-auto shadow-2xl'>
+        <div className=' w-full h-full justify-center items-center overflow-auto shadow-md'>
           <StickyScroll content={content} />
         </div>
       ),
     },
     {
-      title: "TEST",
-      value: "product2",
+      title: "Online Learning",
+      value: "online-learning",
       content: (
-        <div className=' w-full h-full justify-center items-center overflow-auto shadow-2xl'>
+        <div className=' w-full h-full justify-center items-center overflow-auto shadow-md'>
+          <StickyScroll content={content} />
+        </div>
+      ),
+    },
+    {
+      title: "Languages",
+      value: "languages",
+      content: (
+        <div className=' w-full h-full justify-center items-center overflow-auto shadow-md'>
+          <StickyScroll content={content} />
+        </div>
+      ),
+    },
+    {
+      title: "Competitions & Awards",
+      value: "competitions_awards",
+      content: (
+        <div className=' w-full h-full justify-center items-center overflow-auto shadow-md'>
+          <StickyScroll content={content} />
+        </div>
+      ),
+    },
+    {
+      title: "Professional Training",
+      value: "professional_training",
+      content: (
+        <div className=' w-full h-full justify-center items-center overflow-auto shadow-md'>
           <StickyScroll content={content} />
         </div>
       ),
@@ -118,7 +145,7 @@ export const SectionCertifications = () => {
   return (
     <section
       id='certifications'
-      className='flex flex-col w-full gap-10 overflow-hidden justify-center items-center px-4 md:px-6 pt-[5rem]'
+      className='flex flex-col w-full gap-2 overflow-hidden justify-center items-center px-4 md:px-6 pb-12 pt-[5rem]'
       style={{ height: "calc(100dvh)" }}>
       <div className=' flex flex-col gap-2 justify-center items-center'>
         <p className=' text-4xl font-bold'>Certifications</p>
@@ -128,7 +155,7 @@ export const SectionCertifications = () => {
           }
         </p>
       </div>
-      <div className='h-[20rem] md:h-[40rem] [perspective:1000px] relative b flex flex-col max-w-5xl mx-auto w-full  items-start justify-start'>
+      <div className='h-full [perspective:1000px] relative flex flex-col max-w-5xl mx-auto w-full  items-start justify-start'>
         <Tabs tabs={tabs} />
       </div>
     </section>

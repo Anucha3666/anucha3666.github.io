@@ -1,3 +1,5 @@
+import { PrimaryEducation } from "./bnm";
+import { LowerSecondarySchool } from "./pc";
 import { BSMechatronicsRobotics } from "./rmutto";
 import { RobotIntlStudent } from "./setc";
 import { HVCMechatronicsRobotics, VCElectronics } from "./utc";
@@ -31,5 +33,21 @@ export const DATA_EDUCATION_EXPERIENCE = [
       </div>
     ),
     content: <VCElectronics />,
+  },
+  {
+    title: (
+      <div className=' flex gap-4 items-center'>
+        <p className=' text-5xl'>2013</p>
+      </div>
+    ),
+    content: <LowerSecondarySchool />,
+  },
+  {
+    title: (
+      <div className=' flex gap-4 items-center'>
+        <p className=' text-5xl'>2007</p>
+      </div>
+    ),
+    content: <PrimaryEducation />,
   },
 ];

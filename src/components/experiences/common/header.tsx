@@ -24,7 +24,7 @@ export const ExperienceHeader: FC<TExperienceHeaderProps> = ({
               alt='icon-snc'
               width={64}
               height={64}
-              className='w-min h-full object-cover'
+              className='w-min h-full object-cover rounded-full'
             />
           </div>
         )}

@@ -160,4 +160,53 @@ export const DATA_WORK_EXPERIENCE = [
       </div>
     ),
   },
+  {
+    title: (
+      <div className=' flex gap-4 items-center'>
+        <p className=' text-5xl'>2018</p>
+      </div>
+    ),
+    content: (
+      <div className=' py-2'>
+        <div className=' flex justify-between'>
+          <div className=' flex gap-2 items-center'>
+            <div className='w-[3.4rem] h-[3.4rem] p-1 rounded-full border-[1px] shadow-2xl flex justify-center items-center overflow-hidden '>
+              <Image
+                src='/images/experience/work/cat.png'
+                alt='icon-snc'
+                width={64}
+                height={64}
+                className='w-full h-min object-cover'
+              />
+            </div>
+            <div>
+              <p className='text-xl font-bold text-neutral-800'>
+                Maintenance technician
+              </p>
+              <p className='text-lg font-normal text-neutral-800'>
+                The Communications Authority of Thailand (CAT)
+              </p>
+            </div>
+          </div>
+          <p className='text-xl font-bold text-neutral-800'>Uttaradit, TH</p>
+        </div>
+        <div className=' pl-2'>
+          {[
+            "Provided customer service and resolved technical issues",
+            "Conducted training sessions for students on telecommunication systems",
+            "Installed and repaired fiber optic cables",
+            "Troubleshot and maintained telecommunication network systems",
+            "Performed routine maintenance on communication equipment and network infrastructure",
+            "Installed and upgraded various signal cable systems",
+            "Documented maintenance activities and prepared technical reports",
+          ]?.map((info, i) => (
+            <div key={i} className='flex gap-2 items-center'>
+              <div className=' w-[4px] h-[4px] rounded-full bg-black' />
+              <p>{info}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    ),
+  },
 ];
