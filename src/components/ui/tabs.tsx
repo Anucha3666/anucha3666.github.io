@@ -7,6 +7,7 @@ import { useState } from "react";
 type Tab = {
   title: string;
   value: string;
+  length: number;
   content?: string | React.ReactNode;
 };
 
@@ -52,7 +53,7 @@ export const Tabs = ({
             onMouseEnter={() => setHovering(true)}
             onMouseLeave={() => setHovering(false)}
             className={cn(
-              "relative px-4 py-2 rounded-full hover:bg-[#FFFFFFA0]",
+              "relative px-4 py-0 rounded-full hover:bg-[#FFFFFFA0]",
               tabClassName
             )}
             style={{
@@ -72,6 +73,12 @@ export const Tabs = ({
             <span className='relative block text-black dark:text-white cursor-pointer'>
               {tab?.title ?? ""}
             </span>
+
+            {tab?.length > 0 && (
+              <div className=' w-5 h-5 flex justify-center items-center  absolute -top-2 -right-0 text-xs font-bold rounded-full bg-red-500 text-white'>
+                {tab?.length}
+              </div>
+            )}
           </button>
         ))}
       </div>

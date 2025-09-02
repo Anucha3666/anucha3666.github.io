@@ -1,6 +1,7 @@
 import { Footer, Navbar } from "@/components/layouts";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import "react-photo-view/dist/react-photo-view.css";
 import "./globals.css";
 
 const geistSans = Geist({
