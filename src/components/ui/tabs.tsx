@@ -1,8 +1,9 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { motion } from "motion/react";
-import { useState } from "react";
+import { Maximize2, X } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
+import { useEffect, useState } from "react";
 
 type Tab = {
   title: string;
@@ -26,6 +27,8 @@ export const Tabs = ({
 }) => {
   const [active, setActive] = useState<Tab>(propTabs[0]);
   const [tabs, setTabs] = useState<Tab[]>(propTabs);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [popupContent, setPopupContent] = useState<Tab | null>(null);
 
   const moveSelectedTabToTop = (idx: number) => {
     const newTabs = [...propTabs];
@@ -36,6 +39,30 @@ export const Tabs = ({
   };
 
   const [hovering, setHovering] = useState(false);
+
+  const handleMaximize = (tab: Tab) => {
+    setPopupContent(tab);
+    setIsPopupOpen(true);
+  };
+
+  const closePopup = () => {
+    setIsPopupOpen(false);
+    setPopupContent(null);
+  };
+
+  // Close popup with Escape key
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && isPopupOpen) {
+        closePopup();
+      }
+    };
+
+    if (isPopupOpen) {
+      document.addEventListener("keydown", handleEscape);
+      return () => document.removeEventListener("keydown", handleEscape);
+    }
+  }, [isPopupOpen]);
 
   return (
     <>
@@ -53,7 +80,7 @@ export const Tabs = ({
             onMouseEnter={() => setHovering(true)}
             onMouseLeave={() => setHovering(false)}
             className={cn(
-              "relative px-4 py-0 rounded-full hover:bg-[#FFFFFFA0]",
+              "relative px-4 py-2 rounded-full hover:bg-[#FFFFFFA0]",
               tabClassName
             )}
             style={{
@@ -75,20 +102,100 @@ export const Tabs = ({
             </span>
 
             {tab?.length > 0 && (
-              <div className=' w-5 h-5 flex justify-center items-center  absolute -top-2 -right-0 text-xs font-bold rounded-full bg-red-500 text-white'>
+              <div className='w-5 h-5 flex justify-center items-center absolute -top-2 -right-0 text-xs font-bold rounded-full bg-red-500 text-white'>
                 {tab?.length}
               </div>
             )}
           </button>
         ))}
       </div>
+
       <FadeInDiv
         tabs={tabs}
         active={active}
         key={active.value}
         hovering={hovering}
         className={cn("mt-8", contentClassName)}
+        onMaximize={handleMaximize}
       />
+
+      {/* Fullscreen Popup - Direct HTML approach */}
+      <AnimatePresence>
+        {isPopupOpen && popupContent && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className='popup-overlay'
+            onClick={closePopup}
+            style={{
+              position: "fixed",
+              top: "0",
+              left: "0",
+              right: "0",
+              bottom: "0",
+              width: "100vw",
+              height: "100vh",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              zIndex: "50",
+              boxSizing: "border-box",
+            }}>
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              onClick={(e) => e.stopPropagation()}
+              style={{
+                backgroundColor: "white",
+                borderRadius: "0px",
+                width: "100vw",
+                height: "100vh",
+                maxWidth: "none",
+                maxHeight: "none",
+                display: "flex",
+                flexDirection: "column",
+                overflow: "hidden",
+                margin: "0",
+                position: "relative",
+              }}>
+              {/* Content */}
+              <div
+                style={{
+                  flex: 1,
+                  overflow: "auto",
+                }}>
+                <div
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                  }}
+                  className=' relative bg-black'>
+                  {popupContent.content}
+                  <div className='absolute top-6 left-6 flex text-white'>
+                    <span className='relative block text-4xl text-white font-bold'>
+                      {popupContent?.title ?? ""}
+                    </span>
+
+                    {popupContent?.length > 0 && (
+                      <div className='w-5 h-5 flex justify-center items-center text-xs font-bold rounded-full bg-red-500 text-white'>
+                        {popupContent?.length}
+                      </div>
+                    )}
+                  </div>
+                  <div
+                    onClick={closePopup}
+                    className='absolute top-6 right-6 p-2 rounded-full text-white hover:text-red-500 bg-black bg-opacity-20 hover:scale-110 active:scale-90 cursor-pointer  hover:bg-opacity-40 transition-all duration-200 group'>
+                    <X className='w-5 h-5 ' />
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };
@@ -97,16 +204,19 @@ export const FadeInDiv = ({
   className,
   tabs,
   hovering,
+  onMaximize,
 }: {
   className?: string;
   key?: string;
   tabs: Tab[];
   active: Tab;
   hovering?: boolean;
+  onMaximize?: (tab: Tab) => void;
 }) => {
   const isActive = (tab: Tab) => {
     return tab.value === tabs[0].value;
   };
+
   return (
     <div className='relative w-full h-full'>
       {tabs.map((tab, idx) => (
@@ -127,6 +237,11 @@ export const FadeInDiv = ({
             className
           )}>
           {tab.content}
+          <div
+            onClick={() => onMaximize?.(tab)}
+            className='absolute top-6 right-6 p-2 rounded-full  bg-black bg-opacity-20 hover:scale-110 active:scale-90 cursor-pointer  hover:bg-opacity-40 transition-all duration-200 group'>
+            <Maximize2 className='w-5 h-5 text-white' />
+          </div>
         </motion.div>
       ))}
     </div>

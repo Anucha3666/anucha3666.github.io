@@ -14,23 +14,23 @@ export const SectionCertifications = () => {
     },
     {
       title: "Languages",
-      value: "languages",
+      value: "language",
     },
     {
       title: "Training & Courses",
-      value: "training_courses",
+      value: "training_course",
     },
     {
       title: "Competitions & Awards",
-      value: "competitions_awards",
+      value: "competition_award",
     },
     {
       title: "Licenses",
       value: "licenses",
     },
     {
-      title: "Others",
-      value: "others",
+      title: "Other",
+      value: "other",
     },
   ];
 
@@ -47,12 +47,25 @@ export const SectionCertifications = () => {
           }
         </p>
       </div>
-      <div className='h-full [perspective:1000px] relative flex flex-col max-w-5xl mx-auto w-full  items-start justify-start'>
+      {/* <div className='h-full [perspective:1000px] relative flex flex-col max-w-5xl mx-auto w-full  items-start justify-start'> */}
+      <div className='h-full relative flex flex-col max-w-5xl mx-auto w-full  items-start justify-start'>
         <Tabs
           tabs={tabs?.map((item) => {
             const data = DATA_CERTIFICATIONS?.filter(({ tags }) =>
               tags?.includes(item?.value)
-            );
+            )?.sort((a, b) => {
+              const [dayA, monthA, yearA] = String(a?.date_issue)
+                .split("/")
+                .map(Number);
+              const [dayB, monthB, yearB] = String(b?.date_issue)
+                .split("/")
+                .map(Number);
+
+              const dateA = new Date(yearA, monthA - 1, dayA);
+              const dateB = new Date(yearB, monthB - 1, dayB);
+
+              return dateB.getTime() - dateA.getTime(); // ล่าสุดอยู่ก่อน
+            });
             return {
               ...item,
               length: data?.length,
