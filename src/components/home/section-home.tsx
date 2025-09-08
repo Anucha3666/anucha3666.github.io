@@ -4,6 +4,7 @@ import {
   DraggableCardBody,
   DraggableCardContainer,
 } from "@/components/ui/draggable-card";
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { TypewriterEffectSmooth } from "../ui/typewriter-effect";
@@ -49,6 +50,27 @@ export const SectionHome = () => {
         "absolute top-46 left-[20%] rotate-[4deg] 2xl:top-62 2xl:left-[32%] ",
     },
   ];
+
+  const getExperienceText = () => {
+    const startDate = new Date("2021-08-16");
+    const currentDate = new Date();
+
+    let years = currentDate.getFullYear() - startDate.getFullYear();
+    let months = currentDate.getMonth() - startDate.getMonth();
+
+    if (months < 0) {
+      years--;
+      months += 12;
+    }
+
+    if (years > 0 && months > 0) {
+      return `${years}+ years`;
+    } else if (years > 0) {
+      return `${years} years`;
+    } else {
+      return `${months} months`;
+    }
+  };
   return (
     <section
       id='home'
@@ -72,14 +94,14 @@ export const SectionHome = () => {
               },
             ]}
           />
-          <p className='max-w-[600px] text-muted-foreground md:text-xl'>
-            Full-Stack Developer & UX/UI Designer with 3+ years of experience
-            building web applications
+          <p className='max-w-[600px] indent-10 text-muted-foreground md:text-xl text-center'>
+            Full-Stack Developer & UX/UI Designer with {getExperienceText()} of
+            experience building web applications
           </p>
         </div>
         <div className='flex flex-col gap-2 min-[400px]:flex-row'>
           <button
-            className='px-4 py-2 rounded-md border border-black bg-white text-black text-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200'
+            className='px-4 py-2 rounded-md border cursor-pointer border-black bg-white text-black text-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200'
             onClick={(e) => {
               e.preventDefault();
               document.getElementById("contact")?.scrollIntoView({
@@ -90,7 +112,7 @@ export const SectionHome = () => {
             Contact Me
           </button>
           <button
-            className='px-4 py-2 rounded-md border border-black bg-white text-black text-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200'
+            className='px-4 py-2 rounded-md border cursor-pointer border-black bg-white text-black text-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200'
             onClick={(e) => {
               e.preventDefault();
               document.getElementById("projects")?.scrollIntoView({
@@ -101,22 +123,53 @@ export const SectionHome = () => {
             View Projects
           </button>
         </div>
-        <div className='flex items-center gap-4 text-sm'>
-          <Link
-            href='https://github.com'
-            className='flex items-center gap-1 underline-offset-4 hover:underline'>
-            GitHub
-          </Link>
-          <Link
-            href='https://linkedin.com'
-            className='flex items-center gap-1 underline-offset-4 hover:underline'>
-            LinkedIn
-          </Link>
-          <Link
-            href='https://twitter.com'
-            className='flex items-center gap-1 underline-offset-4 hover:underline'>
-            Twitter
-          </Link>
+        <div className='flex items-center gap-0 text-sm'>
+          {[
+            {
+              label: "LinkedIn",
+              link: "https://www.linkedin.com/",
+              src: "https://res.cloudinary.com/dqj0esw62/image/upload/v1757299692/LinkedIn_qystba.png",
+              color: " bg-[#FFF] hover:bg-[#FFF]/90 focus:ring-[#FFF]/50",
+            },
+            {
+              label: "Github",
+              link: "https://github.com/Anucha3666",
+              src: "https://res.cloudinary.com/dqj0esw62/image/upload/v1757299692/GitHub_eomiat.png",
+              color: "bg-[#FFF] hover:bg-[#FFF]/90 focus:ring-[#FFF]/50",
+            },
+            {
+              label: "LeetCode",
+              link: "https://leetcode.com/Anucha3666/",
+              src: "https://res.cloudinary.com/dqj0esw62/image/upload/v1757299692/LeetCode_bcubfx.png",
+              color:
+                "text-white bg-[#000] hover:bg-[#000]/90 focus:ring-[#000]/50",
+            },
+            {
+              label: "Gmail",
+              link: "mailto:anucha.ram3666@gmail.com",
+              src: "https://res.cloudinary.com/dqj0esw62/image/upload/v1757303129/Gmail_jj4hcw.png",
+              color: "bg-[#FFF] hover:bg-[#FFF]/90 focus:ring-[#FFF]/50",
+            },
+          ]?.map(({ label, link, src, color }, i) => (
+            <Link
+              key={i}
+              href={link}
+              target='_blank'
+              className={cn(
+                `focus:ring-4 font-bold focus:outline-none shadow-2xl border-[1px] rounded-lg text-sm px-3 py-2 text-center inline-flex items-center me-2 mb-2
+                 hover:scale-105 active:scale-95`,
+                color
+              )}>
+              <Image
+                src={src}
+                width={400}
+                height={300}
+                className='w-6 h-6 me-2 object-contain'
+                alt={label}
+              />
+              {label}
+            </Link>
+          ))}
         </div>
       </div>
       <div className='flex w-full h-full items-center justify-center'>

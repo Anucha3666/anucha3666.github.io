@@ -9,6 +9,7 @@ import {
   NavItems,
 } from "@/components/ui/resizable-navbar";
 import { useState } from "react";
+import { PhotoProvider, PhotoView } from "react-photo-view";
 
 export const Navbar = () => {
   const navItems = [
@@ -85,19 +86,33 @@ export const Navbar = () => {
           </MobileNav>
         </div>
 
-        <div className=' flex gap-2 justify-end'>
-          <button className='relative inline-flex h-min overflow-hidden rounded-md p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50'>
-            <span className='absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]' />
-            <span className='inline-flex h-full w-full cursor-pointer items-center justify-center rounded-md bg-white px-3 py-1 text-sm font-medium backdrop-blur-3xl'>
-              Resume
-            </span>
-          </button>
-          <button className='relative inline-flex h-min overflow-hidden rounded-md p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50'>
-            <span className='absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]' />
-            <span className='inline-flex h-full w-full cursor-pointer items-center justify-center rounded-md bg-white px-3 py-1 text-sm font-medium backdrop-blur-3xl'>
-              C.V.
-            </span>
-          </button>
+        <div className=' flex gap-2 justify-end cursor-pointer'>
+          <PhotoProvider>
+            <PhotoView
+              src={
+                "https://res.cloudinary.com/dqj0esw62/image/upload/v1757298454/Resume_rjjbme.png"
+              }>
+              <div className='relative border-[1px] shadow-2xl inline-flex items-center justify-start w-[6rem] py-1 overflow-hidden font-medium transition-all bg-white rounded hover:bg-white group'>
+                <span className='w-48 h-48 rounded rotate-[-40deg] bg-orange-600 absolute bottom-0 left-0 -translate-x-full ease-out duration-500 transition-all translate-y-full mb-9 ml-9 group-hover:ml-0 group-hover:mb-32 group-hover:translate-x-0'></span>
+                <span className='relative text-center font-semibold text-sm w-full text-black transition-colors duration-300 ease-in-out group-hover:text-white'>
+                  Resume
+                </span>
+              </div>
+            </PhotoView>
+          </PhotoProvider>
+          <PhotoProvider>
+            <PhotoView
+              src={
+                "https://res.cloudinary.com/dqj0esw62/image/upload/v1757298440/CV_k474fe.png"
+              }>
+              <div className='relative border-[1px] shadow-2xl inline-flex items-center justify-start w-[6rem] py-1 overflow-hidden font-medium transition-all bg-white rounded hover:bg-white group'>
+                <span className='w-48 h-48 rounded rotate-[-40deg] bg-blue-600 absolute bottom-0 left-0 -translate-x-full ease-out duration-500 transition-all translate-y-full mb-9 ml-9 group-hover:ml-0 group-hover:mb-32 group-hover:translate-x-0'></span>
+                <span className='relative text-center font-semibold text-sm w-full text-black transition-colors duration-300 ease-in-out group-hover:text-white'>
+                  C.V.
+                </span>
+              </div>
+            </PhotoView>
+          </PhotoProvider>
         </div>
       </div>
     </header>
